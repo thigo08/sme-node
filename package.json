@@ -1,0 +1,25 @@
+{
+  "name": "sme-node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thigo08/sme-node.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thigo08/sme-node/issues"
+  },
+  "homepage": "https://github.com/thigo08/sme-node#readme",
+  "dependencies": {
+    "restify": "^8.0.0"
+  },
+  "devDependencies": {
+    "@types/restify": "^7.2.8"
+  }
+}
