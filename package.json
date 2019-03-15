@@ -17,9 +17,11 @@
   },
   "homepage": "https://github.com/thigo08/sme-node#readme",
   "dependencies": {
+    "mongoose": "^5.4.19",
     "restify": "^8.0.0"
   },
   "devDependencies": {
+    "@types/mongoose": "^5.3.22",
     "@types/restify": "^7.2.8"
   }
 }
