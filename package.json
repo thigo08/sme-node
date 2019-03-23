@@ -22,6 +22,7 @@
   },
   "devDependencies": {
     "@types/mongoose": "^5.3.22",
-    "@types/restify": "^7.2.8"
+    "@types/restify": "^7.2.8",
+    "@types/restify-errors": "^4.3.3"
   }
 }
