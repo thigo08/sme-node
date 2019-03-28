@@ -1,7 +1,7 @@
 import * as mongoose from 'mongoose'
 
 export interface Medico extends mongoose.Document {
-    name: string,
+    nome: string,
     celular: string,
     crm: string,
     email: string,
@@ -9,21 +9,28 @@ export interface Medico extends mongoose.Document {
 }
 
 const medicoSchema = new mongoose.Schema({
-    name: {
-        type: String
+    nome: {
+        type: String,
+        required: true,
+        maxlength: 80,
+        minlength: 3
     },
     celular: {
-        type: String
+        type: String,
+        required: true
     },
     crm: {
         type: String
     },
     email: {
         type: String,
-        unique: true
+        unique: true,
+        match: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+        required: true
     },
     dataNascimento: {
-        type: Date
+        type: Date,
+        required: true
     }
 })
 

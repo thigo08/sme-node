@@ -1,36 +1,47 @@
 import * as mongoose from 'mongoose'
+import { User } from '../users/users.model';
+import { Laboratorio } from '../laboratorios/laboratorios.model';
 import { Paciente } from '../pacientes/pacientes.model';
 import { Medico } from '../medicos/medicos.model';
-import { Laboratorio } from '../laboratorios/laboratorios.model';
+import { ItemLaudo, itemSchema } from './itemLaudo.model';
 
 export interface Laudo extends mongoose.Document {
     codigoExtra: string,
-    usuario: object,
-    laboratorio: Laboratorio,
-    paciente: Paciente,
-    medico: Medico,
+    usuario: mongoose.Types.ObjectId | User,
+    laboratorio: mongoose.Types.ObjectId | Laboratorio,
+    paciente: mongoose.Types.ObjectId | Paciente,
+    medico: mongoose.Types.ObjectId | Medico,
     dataHoraEmissao: Date,
     dataHoraRecebido: Date,
     dataHoraResultado: Date,
-    usuarioRecebeu: object,
-    itemsLaudo: Array<object>
+    usuarioRecebeu: mongoose.Types.ObjectId | User,
+    itemsLaudo: ItemLaudo[]
 }
 
 const laudoSchema = new mongoose.Schema({
     codigoExtra: {
-        type: String
+        type: String,
+        required: true
     },
     usuario: {
-        type: Object
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
     },
     laboratorio: {
-        type: Object
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Laboratorio',
+        required: true
     },
     paciente: {
-        type: Object
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Paciente',
+        required: true
     },
     medico: {
-        type: Object
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Medico',
+        required: true
     },
     dataHoraEmissao: {
         type: Date
@@ -42,10 +53,15 @@ const laudoSchema = new mongoose.Schema({
         type: Date
     },
     usuarioRecebeu: {
-        type: Object
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
     },
     itemsLaudo: {
-        type: Array
+        type: [itemSchema],
+        required: false,
+        select: false,
+        default: []
     }
 })
 
